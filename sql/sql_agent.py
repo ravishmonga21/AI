@@ -24,6 +24,7 @@ df.to_sql("imdb", conn, if_exists="replace", index=False)
 conn.close()
 
 db = SQLDatabase.from_uri("sqlite:///data/imdb.db",include_tables=["imdb"])
+
 llm = get_llm("gpt-4o-mini")
 toolkit = SQLDatabaseToolkit(db=db, llm=llm)
 tools = toolkit.get_tools()
@@ -34,13 +35,6 @@ _sql_agent = create_agent(
     tools=tools,
     system_prompt=system_prompt,
 )
-
-# ← Reusable helper for viz_agent to call directly
-def run_sql_query(query: str) -> str:
-    response = _sql_agent.invoke({
-        "messages": [{"role": "user", "content": query}]
-    })
-    return response["messages"][-1].content
 
 # LangGraph node
 def sql_agent(state: dict[str, Any]) -> Command:
