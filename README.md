@@ -98,20 +98,6 @@ Expected behavior:
 
 The graph starts from `START`, routes through `supervisor`, and conditionally dispatches to `sql_agent` or `viz_agent`.
 
-```mermaid
-flowchart TD
-    START([START]) --> SUP[supervisor]
-
-    SUP -- next = sql_agent --> SQL[sql_agent]
-    SUP -- next = viz_agent --> VIZ[viz_agent]
-    SUP -- next = __end__ --> END([END])
-
-    SQL -- next = supervisor --> SUP
-    SQL -- next = __end__ --> END
-
-    VIZ --> END
-```
-
 Rendered diagram:
 
 ![LangGraph flow](./mermaid-diagram.png)
