@@ -1,9 +1,6 @@
 import sys
 from dotenv import load_dotenv
-from langchain.tools import tool
-from pydantic import BaseModel
 from typing import Any
-from pathlib import Path
 
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
