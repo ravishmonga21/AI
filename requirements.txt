@@ -12,3 +12,5 @@ langgraph
 streamlit
 pandas
 streamlit-echarts
+langchain-tavily
+diagrams

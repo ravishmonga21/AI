@@ -19,7 +19,7 @@ if not ANTHROPIC_API_KEY:
 def get_llm(model: str = "gpt-4o-mini") -> ChatOpenAI:
     if model == "gpt-4o-mini":
         return ChatOpenAI(model=model, api_key=OPENAI_API_KEY)
-    elif model == "claude-4-6-sonnet":
+    elif model == "claude-haiku-4-5":
         return ChatAnthropic(model=model, api_key=ANTHROPIC_API_KEY)
     else:
         raise ValueError(f"Model {model} not supported")
